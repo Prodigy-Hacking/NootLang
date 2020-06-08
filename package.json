@@ -7,6 +7,10 @@
 	"license": "MIT",
 	"scripts": {
 		"bstart": "tsc && yarn start",
-		"start": "node dist/index"
+		"start": "node dist/index",
+		"install": "npx tsc -p ."
+	},
+	"dependencies": {
+		"typescript": "^3.9.5"
 	}
 }
