@@ -1,2 +1,2 @@
 @echo off
-node dist/index %*
+node dist/cmd %*
