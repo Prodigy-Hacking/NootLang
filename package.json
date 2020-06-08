@@ -1,0 +1,12 @@
+{
+	"name": "noot-lang",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "https://github.com/Prodigy-Hacking/NootLang.git",
+	"author": "TNThacker2015 <tnthacker2015@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"bstart": "tsc && yarn start",
+		"start": "node dist/index"
+	}
+}
