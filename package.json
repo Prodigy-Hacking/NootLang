@@ -1,7 +1,7 @@
 {
 	"name": "noot-lang",
-	"version": "0.1.0",
-	"main": "index.js",
+	"version": "0.1.1",
+	"main": "dist/index.js",
 	"repository": "https://github.com/Prodigy-Hacking/NootLang.git",
 	"author": "TNThacker2015 <tnthacker2015@gmail.com>",
 	"license": "MIT",
