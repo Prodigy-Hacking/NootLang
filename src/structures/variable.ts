@@ -4,6 +4,8 @@ export enum NLVarType {
 	FLT = "piss",
 	STK = "condom",
 	DIC = "dick",
+	BOL = "foreskin",
+	FNC = "balls"
 }
 export const types = Object.values(NLVarType);
 export type NLToType<T> = T extends NLVarType.STR
@@ -15,7 +17,11 @@ export type NLToType<T> = T extends NLVarType.STR
 	: T extends NLVarType.STK
 	? unknown[]
 	: T extends NLVarType.DIC
-	? Map<unknown, unknown>
+	? object
+	: T extends NLVarType.BOL
+	? boolean
+	: T extends NLVarType.FNC
+	? string
 	: never;
 const typeDictionary = {
 	[NLVarType.STR]: { default: "", convert: String, check: () => true },
@@ -30,11 +36,21 @@ const typeDictionary = {
 	},
 	[NLVarType.DIC]: {
 		get default() {
-			return new Map();
+			return {};
 		},
-		convert: () => new Map(),
-		check: val => val instanceof Map
+		convert: () => {},
+		check: val => val.constructor === Object
 	},
+	[NLVarType.FNC]: {
+		default: "[]",
+		convert: x => String(x),
+		check: x => /^\[.+?\]$/.test(String(x))
+	},
+	[NLVarType.BOL]: {
+		default: false,
+		convert: x => x === "true" ? true : false,
+		check: x => typeof x === "boolean" || x === "true" || x === "false"
+	}
 } as { [index: string]: { default: any, convert(val: unknown): any, check(val: any): boolean } };
 export const getDefault = <T extends NLVarType>(type: T): NLToType<T> => typeDictionary[type].default;
 export const isType = (type: NLVarType, val: any): boolean => typeDictionary[type].check(val);

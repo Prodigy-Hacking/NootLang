@@ -24,11 +24,11 @@ export class Compiler {
 			},
 		}
 	) {}
-	async compile(str: string) {
+	async compile(str: string, end = true) {
 		const args = new Arguments(parseString(str));
 		for (const arg of args) {
-			if (keywords.hasOwnProperty(arg.toLowerCase())) await keywords[arg.toLowerCase() as keyof typeof keywords](args, this.varManager, this.std);
+			if (keywords.hasOwnProperty(arg.toLowerCase())) await keywords[arg.toLowerCase() as keyof typeof keywords](args, this.varManager, this.std, { compiler: this });
 		}
-		this.std.out(">>> END OF NOOT")
+		if (end) this.std.out(">>> END OF NOOT")
 	}
 }
