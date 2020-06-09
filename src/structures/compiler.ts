@@ -5,7 +5,7 @@ import { keywords, Keyword } from "../util/keywords";
 import readline from "readline";
 export interface Std {
 	in: () => Promise<string>;
-	out: (str: string) => unknown;
+	out: (str: unknown) => unknown;
 	err: (str: string) => unknown;
 }
 export class Compiler {

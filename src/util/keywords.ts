@@ -40,7 +40,7 @@ export namespace keywords {
 	};
 	export const treatment: Keyword = (args, variables, std) => {
 		const variable = getArgVars(args, std, variables, "TreatmentError");
-		console.log(variable);
+		std.out(variable);
 	};
 	export const circumcise: Keyword = (args, variables, std) =>
 		changeVar(args, std, variables, "CircumcisionError", (vari, val) => (vari.value = val as any));
